@@ -21,6 +21,20 @@ public class Main
         System.out.println(Math.sqrt(answer1));
         System.out.println(Math.pow(5,2));
         System.out.println(name.charAt(0));
+        System.out.println(name.substring(0,2));
+        
+        String names[]={"imtinan","jibon"};
+        System.out.println(names[0]);
+        int[] roll= new int[6];
+        roll[1]=1;
+        String names1[]= new String[2];
+        System.out.println(roll[1]);
+         int[][] myNumbers = { {1, 2, 3, 4}, {5, 6, 7} };
+    for (int k = 0; k < myNumbers.length; ++k) {
+      for(int j = 0; j < myNumbers[k].length; ++j) {
+        System.out.println(myNumbers[k][j]);
+      }
+    }
         
         
         
