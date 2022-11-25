@@ -1,0 +1,28 @@
+import java.lang.Math;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        int i=9;
+        String name="My name is ";
+        String name1="Jibon ";
+        System.out.println(i);
+        System.out.println(name);
+        i++;
+        i++;
+        System.out.println(i);
+        
+        double answer=(double)i/2;
+        System.out.println(answer);
+        int answer1 =(int) answer;
+        System.out.println(answer1);
+        System.out.println(name+name1);
+        System.out.println(Math.sqrt(answer1));
+        System.out.println(Math.pow(5,2));
+        System.out.println(name.charAt(0));
+        
+        
+        
+    }
+}
