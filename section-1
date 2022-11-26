@@ -35,6 +35,18 @@ public class Main
         System.out.println(myNumbers[k][j]);
       }
     }
+         int[] nums =new int[5];
+        Scanner myObj = new Scanner(System.in);
+        for (int i=0;i<5;i++)
+        {
+            int num=myObj.nextInt();
+            nums[i]=num;
+        }
+        for(int i=0;i<5;i++)
+        
+        {
+            System.out.println(nums[i]);
+        }
         
         
         
