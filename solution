@@ -1,0 +1,204 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
+ */
+
+package com.mycompany.mavenproject1;
+
+import java.util.Scanner;
+import java.time.LocalDate;
+import java.text.SimpleDateFormat;  
+import java.util.Date; 
+import java.time.LocalDate;  
+import java.time.Period;  
+import java.text.ParseException;
+
+class Student
+{
+    private String name;
+    String birthday;
+    
+    
+    Student(String name, String date)
+    {
+          this.name=name;
+          this.birthday=date;
+    }
+    
+    private String getName()
+    {
+    return name;
+    }
+    
+    public String getBirthday()
+           
+            {
+                return birthday;
+            }
+    
+    protected int getAge()
+    {
+        LocalDate dob = LocalDate.parse(birthday);   
+        LocalDate curDate = LocalDate.now();  
+        if ((dob != null) && (curDate != null))   
+     {  
+        return Period.between(dob, curDate).getYears();  
+     }  
+    else  
+     {  
+           return 0;  
+      }
+        
+    }
+    
+    
+    public void olderThan(Student s)
+    {
+        
+        System.out.println("the name"+s.name);
+    }
+    
+    
+    
+    
+}
+
+
+class Date1
+{
+   int year;
+   private int month;
+   private int day;
+    Date1()
+    {
+        Scanner scan = new Scanner(System.in); 
+        System.out.println("Enter the year");
+        year=scan.nextInt();
+        System.out.println("Enter the month");
+        month=scan.nextInt();
+        System.out.println("Enter the day");
+        day=scan.nextInt();
+        
+        
+    }
+    
+    Date1(int year,int month,int day)
+    {
+        this.year=year;
+        this.month=month;
+        this.day=day;
+    }
+    
+    public int getYear()
+    {
+        return year;
+    }
+    public int getMonth()
+    {
+        return month;
+    }
+    public int getDay()
+    {
+        return day;
+    }
+    
+    
+    public boolean afterDate(String date)
+    {
+        try
+        {
+        SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+        Date d1 = sdformat.parse(date);
+        Date d2 = sdformat.parse("1990-01-01");
+        if(d1.compareTo(d2)>0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        }
+        catch(ParseException e)
+                {
+                   return false;
+                }
+        
+        
+        
+    }
+}
+
+class Course
+{
+   private int MAX_Student_Num=100;
+   private int numStudents=3;
+   private Student[] list=new Student[MAX_Student_Num];
+   
+   Course()
+   {
+       Scanner scan1 = new Scanner(System.in);
+       
+       for(int i=0;i<numStudents;i++)
+       {
+           System.out.println("Enter the name of the student");
+           String name1=scan1.nextLine();
+           System.out.println("Enter the birthdate of the student");
+           String date1=scan1.nextLine();
+           list[i]=new Student(name1,date1);
+       }
+       
+       
+   }
+   
+   public double avgAgeBornAfterJan011990()
+           {
+               int age=0;
+               int count=0;
+               double answer;
+               Date1 d2= new Date1();
+               
+               for(int j=0;j<numStudents;j++)
+               {
+                   if(d2.afterDate(list[j].birthday)==true)
+                   {
+                       age=age+list[j].getAge();
+                       count=count+1;
+                   }
+               }
+               
+               answer=age/count;
+               return answer;
+           }
+    
+    
+}
+
+public class Mavenproject1
+{
+    
+    
+    public static void main(String args[])
+    {
+       Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter username of student");
+
+       String name = myObj.nextLine();
+       System.out.println("Enter birthdate of student");
+       String date = myObj.nextLine();
+         
+       Student s1= new Student(name,date);
+       
+       System.out.println("Age is: "+s1.getAge());
+       
+       Date1 d1= new Date1();
+       
+       System.out.println("Year is: "+d1.getYear());
+       
+       s1.olderThan(s1);
+       
+       Course c= new Course();
+       
+       System.out.println("Average age is "+ c.avgAgeBornAfterJan011990());
+    }
+}
